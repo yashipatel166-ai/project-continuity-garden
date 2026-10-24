@@ -13,8 +13,8 @@ export function Footer() {
         </div>
         <div>
           <p className={head}>Business</p>
-          <Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className={item}>Face Veneer</Link>
-          <Link to="/produce" className={item}>Agriculture &amp; Fresh Produce</Link>
+          <Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className={item}>Garjan Face Veneer</Link>
+          <Link to="/produce" className={item}>Pomegranate</Link>
           <Link to="/tableware" className={item}>Tableware Catalogue</Link>
         </div>
         <div>

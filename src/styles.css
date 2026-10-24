@@ -7,7 +7,7 @@
 /* AAVYA GLOBEX design system — forest green, warm gold, ivory paper. */
 
 @theme inline {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
   --font-mono: "DM Mono", ui-monospace, monospace;
 
@@ -79,12 +79,15 @@
   }
   html {
     scroll-behavior: smooth;
+    font-size: 106.25%;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
   }
 }
 

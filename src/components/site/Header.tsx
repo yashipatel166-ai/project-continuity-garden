@@ -5,9 +5,9 @@ import { useState } from "react";
 function BusinessLinks({ className }: { className: string }) {
   return (
     <>
-      <Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className={className}>Face Veneer</Link>
-      <Link to="/produce" className={className}>Fresh Produce &amp; Agriculture</Link>
-      <Link to="/tableware" className={className}>Sustainable Tableware</Link>
+      <Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className={className}>Garjan Face Veneer</Link>
+      <Link to="/produce" className={className}>Pomegranate</Link>
+      <Link to="/tableware" className={className}>Bagasse Tableware</Link>
     </>
   );
 }
