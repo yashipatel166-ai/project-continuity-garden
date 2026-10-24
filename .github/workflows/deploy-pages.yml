@@ -53,6 +53,16 @@ jobs:
         run: |
           rm -f .output/public/_headers
           touch .output/public/.nojekyll
+          # /admin uses Lovable's Google sign-in, which only works on Lovable hosting,
+          # so send admin visitors to the Lovable-hosted editor (same database, so edits show here too).
+          ADMIN_URL="https://project-continuity-garden.lovable.app/admin"
+          mkdir -p .output/public/admin
+          cat > .output/public/admin/index.html <<EOF
+          <!doctype html><html lang="en"><head><meta charset="utf-8"><title>Admin — AAVYA GLOBEX</title>
+          <meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=$ADMIN_URL"></head>
+          <body><script>location.replace("$ADMIN_URL")</script>
+          <p>Opening the admin editor… <a href="$ADMIN_URL">Continue</a></p></body></html>
+          EOF
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
