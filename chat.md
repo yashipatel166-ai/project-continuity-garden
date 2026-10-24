@@ -88,3 +88,7 @@ _Last updated: 2026-10-24_
 ## Update 2026-10-24 — `input3681.txt`
 - Error reported (`src/pages/Index.tsx` TS2339 handleClose): file does not exist in this project; nothing to fix. Followed the file instead.
 - Request: sitewide language button linked to Google Translate. Added globe + language dropdown (Google Translate widget) in the header on desktop and mobile; translates the whole site live. Google's top banner hidden.
+
+## Update 2026-10-24 — `context8269.txt`
+- Error reported (`src/pages/NotFound.tsx` TS2571): file does not exist; nothing to fix.
+- Request: replace the current Google Translate language button with one copied from a reference website, keeping layout intact after translation. **Blocked: user has not yet sent the reference link.** Current button left in place until then.
