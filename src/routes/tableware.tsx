@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { CtaBand, Eyebrow, Heading } from "@/components/site/Ui";
+import { useContent } from "@/hooks/use-content";
 import { CATEGORIES, PRODUCTS, type Category, type Product } from "@/lib/tableware";
 
 export const Route = createFileRoute("/tableware")({
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/tableware")({
 const badges = ["100% compostable", "Microwave safe", "Freezer safe", "Oil & water resistant", "Food safe"];
 
 function Tableware() {
+  const c = useContent("tableware");
   const [filter, setFilter] = useState<Category | "All">("All");
   const list = filter === "All" ? PRODUCTS : PRODUCTS.filter((p) => p.category === filter);
   return (
@@ -33,7 +35,7 @@ function Tableware() {
         <div className="lg:pt-6">
           <p className="text-xs font-bold tracking-[0.12em] text-primary">CORE FOODSERVICE RANGE</p>
           <p className="mt-3 max-w-lg text-sm leading-7 text-muted-foreground">
-            Sugarcane Bagasse | Export Ready | B2B Supply — 23 core compostable plates, meal trays, clamshells and bowls. More products and custom branding arranged on request.
+            {c("intro")}
           </p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {badges.map((b) => (
@@ -65,7 +67,7 @@ function Tableware() {
               <p className="eyebrow text-[0.65rem]">Beyond the range</p>
               <h3 className="mt-3 font-display text-2xl text-primary">Need something else?</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Cups, lids, cutlery, dona, custom sizes or printed branding — if it can be moulded from bagasse, we can arrange it for you.
+                {c("beyond_text")}
               </p>
               <Link to="/" search={{ division: "Sustainable Tableware", product: "Custom requirement" }} hash="inquiry" className="link-underline mt-6 self-start text-primary">
                 Tell us what you need <ArrowUpRight className="h-3.5 w-3.5" />

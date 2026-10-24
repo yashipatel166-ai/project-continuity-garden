@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CtaBand, Eyebrow, Heading } from "@/components/site/Ui";
+import { useContent } from "@/hooks/use-content";
 
 export const Route = createFileRoute("/produce")({
   head: () => ({
@@ -31,6 +32,7 @@ const gallery = [
 ];
 
 function Produce() {
+  const c = useContent("produce");
   return (
     <>
       <section className="container-site grid gap-12 pt-12 pb-20 lg:grid-cols-2 lg:items-end">
@@ -40,7 +42,7 @@ function Produce() {
         </div>
         <div>
           <p className="max-w-md text-sm leading-7 text-muted-foreground">
-            We grow pomegranates on our own farms in Gujarat and work with selected local growers. Every lot is graded, packed and documented for export.
+            {c("intro")}
           </p>
           <dl className="mt-6 grid gap-x-6 sm:grid-cols-2">
             {facts.map(([k, v]) => (
@@ -55,18 +57,15 @@ function Produce() {
 
       <section className="container-site pb-28">
         <div className="relative aspect-video overflow-hidden">
-          <video autoPlay muted loop playsInline poster="/farm.jpg" className="h-full w-full object-cover">
-            <source src="/farm.webm" type="video/webm" />
-            <source src="/farm.mp4" type="video/mp4" />
-          </video>
+          <video key={c("video")} src={c("video")} autoPlay muted loop playsInline poster="/farm.jpg" className="h-full w-full object-cover" />
           <span className="absolute bottom-6 left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
             OUR POMEGRANATE FARM · GUJARAT
           </span>
         </div>
         <div className="mt-4 grid auto-rows-[260px] gap-4 md:grid-cols-4">
-          {gallery.map((g) => (
+          {gallery.map((g, i) => (
             <figure key={g.src} className={`group overflow-hidden ${g.cls}`} title={g.alt}>
-              <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={c(`g${i + 1}`)} alt={g.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </figure>
           ))}
         </div>
