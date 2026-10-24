@@ -204,8 +204,33 @@ function FieldEditor({ page, field, saved, savedSize, savedFit, rows, onSaved }:
                 <option value="contain">Show the whole {field.type}</option>
               </select>
             </label>
-            <button onClick={saveDisplay} className="bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Save size</button>
-            <button onClick={() => { setSize(100); setFit("cover"); }} className="text-sm text-muted-foreground underline">Reset size</button>
+            <label className="flex flex-col gap-1 text-sm">
+              <span>Shape (layout)</span>
+              <select value={ratio} onChange={(e) => setRatio(e.target.value)} className="border border-input bg-background p-2">
+                {RATIOS.map((r) => <option key={r.value} value={r.value}>{r.label}</option>)}
+              </select>
+            </label>
+          </div>
+          <div className="flex w-full flex-wrap items-start gap-6">
+            <div className="flex flex-col gap-1 text-sm">
+              <span className="font-medium">Crop preview</span>
+              <div className="overflow-hidden border border-border bg-secondary" style={{ width: 240, aspectRatio: ratio === "auto" ? "16/9" : ratio, maxHeight: 320 }}>
+                {field.type === "image" ? <img src={value} alt="" style={previewStyle} /> : <video key={value} src={value} muted loop autoPlay playsInline style={previewStyle} />}
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 text-sm">
+              <span className="font-medium">Crop manually</span>
+              <label className="flex flex-col gap-1"><span>Zoom in: <b>{zoom}%</b></span>
+                <input type="range" min={100} max={300} step={5} value={zoom} onChange={(e) => setZoom(Number(e.target.value))} className="w-64 accent-primary" /></label>
+              <label className="flex flex-col gap-1"><span>Move left ↔ right: <b>{cx}%</b></span>
+                <input type="range" min={0} max={100} value={cx} onChange={(e) => setCx(Number(e.target.value))} className="w-64 accent-primary" /></label>
+              <label className="flex flex-col gap-1"><span>Move up ↕ down: <b>{cy}%</b></span>
+                <input type="range" min={0} max={100} value={cy} onChange={(e) => setCy(Number(e.target.value))} className="w-64 accent-primary" /></label>
+            </div>
+          </div>
+          <div className="flex w-full flex-wrap gap-5">
+            <button onClick={saveDisplay} className="bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Save size, shape &amp; crop</button>
+            <button onClick={() => { setSize(100); setFit("cover"); setRatio("auto"); setCx(50); setCy(50); setZoom(100); }} className="text-sm text-muted-foreground underline">Reset all</button>
           </div>
         </div>
       ) : field.type === "select" ? (
