@@ -61,3 +61,8 @@ _Last updated: 2026-10-24_
 - `src/components/site/` (Header, Footer, InquiryForm, Ui helpers)
 - `src/lib/tableware.ts` (product data — edit prices/specs here)
 - `src/styles.css` (colours, fonts)
+
+## Update 2026-10-24 — Admin panel
+- Admin panel at `/admin`: Google sign-in; only **yashipatel166@gmail.com** gets admin rights (automatic on first sign-in). Edits text, photos and videos per page (Header & footer, Home, Pomegranate, Tableware), with "Restore original".
+- Uses Lovable Cloud (enabled). Workspace blocks public file buckets, so uploaded media get a 10-year link.
+- To add another admin email: ask the AI (it's a database rule).
