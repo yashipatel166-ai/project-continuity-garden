@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Header";
+import { useContent } from "@/hooks/use-content";
 
 export function Footer() {
+  const c = useContent("site");
   const head = "font-mono text-[0.7rem] tracking-[0.2em] uppercase text-gold mb-5";
   const item = "block text-sm text-muted-foreground hover:text-foreground mb-3";
   return (
@@ -9,7 +11,7 @@ export function Footer() {
       <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo large />
-          <p className="mt-6 text-xs text-muted-foreground">Global Exports, Infinite Reach</p>
+          <p className="mt-6 text-xs text-muted-foreground">{c("footer_tagline")}</p>
         </div>
         <div>
           <p className={head}>Business</p>
@@ -25,8 +27,8 @@ export function Footer() {
         </div>
         <div>
           <p className={head}>Contact</p>
-          <span className={item}>India</span>
-          <a href="mailto:info@aavyaglobex.com" className={item}>info@aavyaglobex.com</a>
+          <span className={item}>{c("contact_location")}</span>
+          <a href={`mailto:${c("contact_email")}`} className={item}>{c("contact_email")}</a>
           <a href="https://wa.me/916359659599" target="_blank" rel="noreferrer" className={item}>WhatsApp us ↗</a>
         </div>
       </div>

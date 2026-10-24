@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Eyebrow, Heading } from "@/components/site/Ui";
 import { InquiryForm } from "@/components/site/InquiryForm";
+import { useContent } from "@/hooks/use-content";
 
 type Search = { division?: string | undefined; product?: string | undefined };
 
@@ -23,12 +24,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const story = [
-  ["Our roots", "A family business built on timber, giving us a deep understanding of natural materials, sourcing and quality."],
-  ["Growth", "We expanded into face veneer and pomegranate farming on our own land in Gujarat."],
-  ["Today", "The next generation is building an export business in bagasse tableware with trusted Indian manufacturing partners."],
-  ["Our approach", "Source carefully, understand the product, work with the right partners and build long-term relationships."],
-];
+const story = ["Our roots", "Growth", "Today", "Our approach"];
 
 const docs = [
   { code: "FSSAI", title: "Central Food Licence", sub: "Importer • Exporter • Wholesaler", href: "/docs/fssai-licence.pdf" },
@@ -38,18 +34,19 @@ const docs = [
 
 function Home() {
   const { division, product } = Route.useSearch();
+  const c = useContent("home");
   return (
     <>
       {/* Hero */}
       <section className="container-site grid items-center gap-14 pt-12 pb-28 lg:grid-cols-2">
         <div className="animate-rise">
-          <Eyebrow line>International sourcing &amp; trade</Eyebrow>
+          <Eyebrow line>{c("hero_eyebrow")}</Eyebrow>
           <h1 className="display mt-8 text-7xl text-primary md:text-[6.2rem]">
             Global<br />sourcing.<br />
             <em className="italic text-gold">Trusted<br />trade.</em>
           </h1>
           <p className="mt-10 max-w-md leading-7 text-muted-foreground">
-            Garjan face veneer, pomegranates and bagasse tableware — imported and exported for buyers worldwide.
+            {c("hero_text")}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <a href="#businesses" className="inline-flex items-center gap-5 bg-primary px-5 py-4 text-sm font-semibold text-primary-foreground hover:opacity-90">
@@ -61,7 +58,7 @@ function Home() {
         <div className="relative animate-rise [animation-delay:150ms]">
           <div className="absolute -bottom-6 -left-6 h-28 w-28 bg-gold" />
           <div className="relative aspect-[1.1] overflow-hidden">
-            <img src="/hero-port.jpg" alt="Container ship at port" className="h-full w-full object-cover" />
+            <img src={c("hero_image")} alt="Container ship at port" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent" />
             <div className="absolute top-8 right-8 flex h-24 w-24 flex-col items-center justify-center rounded-full border border-forest-foreground/70 text-forest-foreground">
               <span className="font-mono text-[0.55rem] tracking-[0.2em]">EST.</span>
@@ -84,7 +81,7 @@ function Home() {
         </div>
         <div className="lg:pt-14">
           <p className="max-w-md text-sm leading-7 text-muted-foreground">
-            AAVYA GLOBEX is an India-based import–export company. We grow pomegranates on our own farms, source face veneer from Indonesia and supply bagasse tableware — delivering to buyers around the world.
+            {c("about_text")}
           </p>
           <a href="#businesses" className="link-underline mt-8 text-primary">Explore our businesses <ArrowDownRight className="h-3.5 w-3.5" /></a>
         </div>
@@ -95,16 +92,16 @@ function Home() {
         <Eyebrow>Our businesses</Eyebrow>
         <Heading main={<>Three divisions.<br /></>} accent="One partner." className="mt-6 text-5xl md:text-[4.2rem]" />
         <div className="mt-14 grid gap-4 md:grid-cols-3">
-          <DivisionCard n="01" tag="Import / Face Veneer" img="/veneer.jpg" bar="border-muted-foreground" title={<>Garjan Face<br />Veneer</>}
-            body="Premium face veneer from established international origins, sourced for buyers who value consistency."
+          <DivisionCard n="01" tag="Import / Face Veneer" img={c("veneer_image")} bar="border-muted-foreground" title={<>Garjan Face<br />Veneer</>}
+            body={c("veneer_text")}
             chips="Garjan Face Veneer"
             link={<Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className="link-underline text-primary">Explore this business <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
-          <DivisionCard n="02" tag="Export / Agriculture" img="/pomegranate.jpg" bar="border-pomegranate" title={<>Pomegranate</>}
-            body="From our own farms and trusted growers to international markets, with pomegranate at the heart of what we do."
+          <DivisionCard n="02" tag="Export / Agriculture" img={c("pomegranate_image")} bar="border-pomegranate" title={<>Pomegranate</>}
+            body={c("pomegranate_text")}
             chips="Our Pomegranates • Own Farms, Gujarat"
             link={<Link to="/produce" className="link-underline text-primary">See our farms <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
-          <DivisionCard n="03" tag="Export / Sustainable Products" img="/bagasse-plates.jpg" bar="border-primary" title={<>Sustainable<br />Tableware</>}
-            body={<><span className="block text-xs font-bold tracking-[0.12em] text-primary">CORE FOODSERVICE RANGE</span>Sugarcane Bagasse | Export Ready | B2B Supply</>}
+          <DivisionCard n="03" tag="Export / Sustainable Products" img={c("tableware_image")} bar="border-primary" title={<>Sustainable<br />Tableware</>}
+            body={<><span className="block text-xs font-bold tracking-[0.12em] text-primary">CORE FOODSERVICE RANGE</span>{c("tableware_text")}</>}
             chips="Bagasse Tableware • Plates • Bowls • Meal Trays • Clamshells"
             link={<Link to="/tableware" className="link-underline text-primary">View catalogue <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
         </div>
@@ -113,10 +110,7 @@ function Home() {
       {/* Farm story */}
       <section className="grid lg:grid-cols-2">
         <div className="relative min-h-[420px]">
-          <video autoPlay muted loop playsInline poster="/farm.jpg" className="absolute inset-0 h-full w-full object-cover">
-            <source src="/farm.webm" type="video/webm" />
-            <source src="/farm.mp4" type="video/mp4" />
-          </video>
+          <video key={c("farm_video")} src={c("farm_video")} autoPlay muted loop playsInline poster="/farm.jpg" className="absolute inset-0 h-full w-full object-cover" />
           <span className="absolute bottom-6 left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
             OUR POMEGRANATE FARM · GUJARAT
           </span>
@@ -125,7 +119,7 @@ function Home() {
           <Eyebrow>Our agricultural story</Eyebrow>
           <Heading main={<>From our farms<br />to</>} accent="global markets." light className="mt-6 text-5xl md:text-[4.2rem]" />
           <p className="mt-8 max-w-md text-sm leading-7 text-forest-muted">
-            Pomegranates from our own farms and selected local growers, graded and packed for export.
+            {c("farm_text")}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-5 border-y border-forest-line py-5 text-sm font-semibold">
             {["Our farm", "Harvest", "Selection", "Export"].map((s, i) => (
@@ -169,11 +163,11 @@ function Home() {
           <p className="mt-8 font-display text-xl italic text-gold">Growing into a new generation of global trade.</p>
         </div>
         <ol className="grid gap-4 sm:grid-cols-2">
-          {story.map(([title, text], i) => (
+          {story.map((title, i) => (
             <li key={title} className="border border-border border-t-2 border-t-gold bg-card p-6">
               <p className="font-mono text-xs tracking-[0.2em] text-gold">0{i + 1}</p>
               <h3 className="mt-3 font-display text-2xl text-primary">{title}</h3>
-              <p className="mt-3 leading-7 text-muted-foreground">{text}</p>
+              <p className="mt-3 leading-7 text-muted-foreground">{c(`story_${i + 1}`)}</p>
             </li>
           ))}
         </ol>
