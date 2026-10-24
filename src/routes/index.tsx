@@ -57,18 +57,18 @@ function Home() {
           </div>
         </div>
         <div className="relative animate-rise [animation-delay:150ms]">
-          <div className="absolute -bottom-6 -left-6 h-28 w-28 bg-gold" />
+          <div className="absolute -bottom-4 -left-4 h-20 w-20 bg-gold sm:-bottom-6 sm:-left-6 sm:h-28 sm:w-28" />
           <div className="relative overflow-hidden bg-secondary">
-            <img src={c("hero_image")} alt="Container ship at port" style={mediaStyle(c, "hero_image", 560)} className="w-full" />
+            <img src={c("hero_image")} alt="Container ship at port" style={mediaStyle(c, "hero_image", 560)} className={`w-full ${!c("hero_image__ratio") || c("hero_image__ratio") === "auto" ? "hero-phone-frame" : ""}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent" />
-            <div className="absolute top-8 right-8 flex h-24 w-24 flex-col items-center justify-center rounded-full border border-forest-foreground/70 text-forest-foreground">
+            <div className="absolute top-4 right-4 flex h-20 w-20 sm:top-8 sm:right-8 sm:h-24 sm:w-24 flex-col items-center justify-center rounded-full border border-forest-foreground/70 text-forest-foreground">
               <span className="font-mono text-[0.55rem] tracking-[0.2em]">EST.</span>
               <span className="font-display text-xl">2026</span>
               <span className="font-mono text-[0.55rem] tracking-[0.2em]">INDIA</span>
             </div>
-            <div className="absolute bottom-6 left-6 text-forest-foreground">
+            <div className="absolute bottom-4 left-4 text-forest-foreground sm:bottom-6 sm:left-6">
               <p className="eyebrow text-[0.6rem]">Origin to market</p>
-              <p className="mt-2 font-display text-2xl italic leading-tight">Grown with care.<br />Shipped with trust.</p>
+              <p className="mt-2 font-display text-xl italic leading-tight sm:text-2xl">Grown with care.<br />Shipped with trust.</p>
             </div>
           </div>
         </div>
