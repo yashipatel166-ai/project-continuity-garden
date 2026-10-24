@@ -66,3 +66,9 @@ _Last updated: 2026-10-24_
 - Admin panel at `/admin`: Google sign-in; only **yashipatel166@gmail.com** gets admin rights (automatic on first sign-in). Edits text, photos and videos per page (Header & footer, Home, Pomegranate, Tableware), with "Restore original".
 - Uses Lovable Cloud (enabled). Workspace blocks public file buckets, so uploaded media get a 10-year link.
 - To add another admin email: ask the AI (it's a database rule).
+
+## Update 2026-10-24 — `query2680.txt`
+- Error reported (`src/pages/NotFound.tsx` TS2694 useRef): file does not exist in this project; nothing to fix. Followed the file's instructions instead.
+- Admin: every photo/video now has a size slider (40–180%) and "Fill the space / Show whole" option. New layout options: hero image left/right, farm video left/right.
+- Logo text larger and bold (header + footer).
+- About text rewritten; pomegranate texts reworded to avoid repeating "own farms and trusted growers" (wording written by the AI — user may confirm/replace in /admin).
