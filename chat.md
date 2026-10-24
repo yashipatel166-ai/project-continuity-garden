@@ -84,3 +84,7 @@ _Last updated: 2026-10-24_
 ## Update 2026-10-24 — `context1524.txt` / `input1862.txt`
 - Error reported (`src/lib/utils.ts` TS2532): utils.ts line 5 is a safe one-line `cn()` helper; nothing undefined there, nothing to fix. `input1862.txt` contained no request.
 - Request: bigger body/information text. Small text sizes enlarged site-wide in src/styles.css (small text ~15px→~18px, extra-small ~13px→~15px).
+
+## Update 2026-10-24 — `input3681.txt`
+- Error reported (`src/pages/Index.tsx` TS2339 handleClose): file does not exist in this project; nothing to fix. Followed the file instead.
+- Request: sitewide language button linked to Google Translate. Added globe + language dropdown (Google Translate widget) in the header on desktop and mobile; translates the whole site live. Google's top banner hidden.

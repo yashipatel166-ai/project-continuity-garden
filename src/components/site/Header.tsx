@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 function BusinessLinks({ className }: { className: string }) {
   return (
@@ -14,7 +15,7 @@ function BusinessLinks({ className }: { className: string }) {
 
 export function Logo({ large = false }: { large?: boolean }) {
   return (
-    <Link to="/" className="flex items-center gap-3">
+    <Link to="/" className="notranslate flex items-center gap-3" translate="no">
       <img src="/logo-mark.png" alt="" className={large ? "h-16 w-auto" : "h-12 w-auto"} />
       <span className={large ? "text-3xl font-bold" : "text-xl font-bold tracking-[0.12em] md:text-2xl"}>
         {large ? (
@@ -50,6 +51,7 @@ export function Header() {
         <Link to="/" hash="about" className={navCls}>About us</Link>
         <Link to="/" hash="certifications" className={navCls}>Certifications</Link>
         <Link to="/" hash="inquiry" className={navCls}>Contact</Link>
+        <LanguageSwitcher id="gt-desktop" />
         <Link
           to="/"
           hash="inquiry"
@@ -58,9 +60,12 @@ export function Header() {
           Request a quote <ArrowUpRight className="h-3.5 w-3.5" />
         </Link>
       </nav>
-      <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
+      <div className="flex items-center gap-4 lg:hidden">
+        <LanguageSwitcher id="gt-mobile" />
+      <button onClick={() => setOpen(!open)} aria-label="Menu">
         {open ? <X /> : <Menu />}
       </button>
+      </div>
       {open && (
         <div className="absolute inset-x-0 top-[84px] z-40 border-b border-border bg-background px-6 py-6 lg:hidden">
           <div className="flex flex-col gap-4" onClick={() => setOpen(false)}>
