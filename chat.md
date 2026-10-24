@@ -130,3 +130,7 @@ _Last updated: 2026-10-24_
 - No screenshots/device details were provided; the published site already had the latest phone layout.
 - Added common real-device safeguards: stop phone browsers auto-enlarging text (text-size-adjust 100%), block sideways scrolling (overflow-x clip), viewport-fit=cover, no grey tap flash.
 - Pending: user screenshot from the actual phone + phone model/browser if a difference remains.
+
+## 2026-10-24 — Ship photo on phones (query2352.txt)
+- Home hero ship photo on phones/tablets now uses the desktop framing (≈538:560) instead of a tall crop, so the whole ship shows like on desktop. Only applies when no custom shape is chosen in /admin.
+- EST. 2026 badge, caption and gold square scaled down on phones. Checked at 393×852.
