@@ -126,20 +126,30 @@ function Editor({ email, onSignOut }: { email: string; onSignOut: () => void }) 
   );
 }
 
-function FieldEditor({ page, field, saved, savedSize, savedFit, onSaved }: { page: PageId; field: Field; saved: string; savedSize: string; savedFit: string; onSaved: () => void }) {
+function FieldEditor({ page, field, saved, savedSize, savedFit, rows, onSaved }: { page: PageId; field: Field; saved: string; savedSize: string; savedFit: string; rows: { page: string; key: string; value: string }[]; onSaved: () => void }) {
+  const get = (k: string, d: string) => rows.find((r) => r.page === page && r.key === `${field.key}__${k}`)?.value || d;
+  const sRatio = get("ratio", "auto"), sX = get("x", "50"), sY = get("y", "50"), sZoom = get("zoom", "100");
   const [size, setSize] = useState(Number(savedSize) || 100);
   const [fit, setFit] = useState(savedFit || "cover");
+  const [ratio, setRatio] = useState(sRatio);
+  const [cx, setCx] = useState(Number(sX));
+  const [cy, setCy] = useState(Number(sY));
+  const [zoom, setZoom] = useState(Number(sZoom));
   useEffect(() => setSize(Number(savedSize) || 100), [savedSize]);
   useEffect(() => setFit(savedFit || "cover"), [savedFit]);
+  useEffect(() => { setRatio(sRatio); setCx(Number(sX)); setCy(Number(sY)); setZoom(Number(sZoom)); }, [sRatio, sX, sY, sZoom]);
   const saveDisplay = async () => {
     setStatus("Saving…");
     const now = new Date().toISOString();
-    const { error } = await supabase.from("site_content").upsert([
-      { page, key: `${field.key}__size`, value: String(size), updated_at: now },
-      { page, key: `${field.key}__fit`, value: fit, updated_at: now },
-    ]);
+    const { error } = await supabase.from("site_content").upsert(
+      ([["size", String(size)], ["fit", fit], ["ratio", ratio], ["x", String(cx)], ["y", String(cy)], ["zoom", String(zoom)]] as const).map(([k, v]) => ({ page, key: `${field.key}__${k}`, value: v, updated_at: now })),
+    );
     setStatus(error ? `Error: ${error.message}` : "Saved");
     if (!error) onSaved();
+  };
+  const previewStyle: React.CSSProperties = {
+    width: "100%", height: "100%", objectFit: fit === "contain" ? "contain" : "cover",
+    objectPosition: `${cx}% ${cy}%`, transform: zoom > 100 ? `scale(${zoom / 100})` : undefined, transformOrigin: `${cx}% ${cy}%`,
   };
   const [value, setValue] = useState(saved || field.default);
   const [status, setStatus] = useState("");
