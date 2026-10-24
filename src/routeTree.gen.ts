@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ProduceRouteImport } from './routes/produce'
 import { Route as TablewareRouteImport } from './routes/tableware'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProduceRoute = ProduceRouteImport.update({
@@ -31,30 +37,34 @@ const TablewareRoute = TablewareRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/produce': typeof ProduceRoute
   '/tableware': typeof TablewareRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/produce': typeof ProduceRoute
   '/tableware': typeof TablewareRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/produce': typeof ProduceRoute
   '/tableware': typeof TablewareRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/produce' | '/tableware'
+  fullPaths: '/' | '/admin' | '/produce' | '/tableware'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/produce' | '/tableware'
-  id: '__root__' | '/' | '/produce' | '/tableware'
+  to: '/' | '/admin' | '/produce' | '/tableware'
+  id: '__root__' | '/' | '/admin' | '/produce' | '/tableware'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   ProduceRoute: typeof ProduceRoute
   TablewareRoute: typeof TablewareRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/produce': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   ProduceRoute: ProduceRoute,
   TablewareRoute: TablewareRoute,
 }
