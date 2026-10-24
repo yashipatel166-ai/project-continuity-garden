@@ -86,12 +86,17 @@
   html {
     scroll-behavior: smooth;
     font-size: 106.25%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: clip;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
     font-size: 1.0625rem;
     line-height: 1.7;
   }

@@ -125,3 +125,8 @@ _Last updated: 2026-10-24_
 - Phones only (below 640px): smaller big headings, tighter section spacing, slimmer header, phone menu scrolls if tall, smaller page side margins, smaller photo labels. Computer layout unchanged.
 - Checked at 360×640 (9:16) on Home, Pomegranate, Tableware: no sideways scrolling.
 - Files: index.tsx, produce.tsx, tableware.tsx, Header, Footer, Ui, InquiryForm, styles.css.
+
+## 2026-10-24 — Real-phone display fixes (Fix_Mobile_Display_Discrepancy + prompt5776.txt)
+- No screenshots/device details were provided; the published site already had the latest phone layout.
+- Added common real-device safeguards: stop phone browsers auto-enlarging text (text-size-adjust 100%), block sideways scrolling (overflow-x clip), viewport-fit=cover, no grey tap flash.
+- Pending: user screenshot from the actual phone + phone model/browser if a difference remains.
