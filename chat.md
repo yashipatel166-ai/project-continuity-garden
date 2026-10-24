@@ -92,3 +92,8 @@ _Last updated: 2026-10-24_
 ## Update 2026-10-24 — `context8269.txt`
 - Error reported (`src/pages/NotFound.tsx` TS2571): file does not exist; nothing to fix.
 - Request: replace the current Google Translate language button with one copied from a reference website, keeping layout intact after translation. **Blocked: user has not yet sent the reference link.** Current button left in place until then.
+
+## Update 2026-10-24 — `message8068.txt`
+- Error reported (`src/App.tsx` TS2488): file does not exist; nothing to fix.
+- Reference for language feature: www.saptarishiply.com. Rebuilt the language button to match: round "Language" pill with globe, dropdown with search box ("Search or type any language…"), ~36 languages in native script + English name, tick on the current one, note "Pages are translated automatically. The brand name and logo stay in English." Google Translate still does the translating but its own widget/banner is hidden; styles keep fonts/spacing intact after translation; nav labels don't wrap. Choosing English restores the original.
+- Header now shows only: Our businesses, About us, Contact (+ language button, Request a quote). Removed Catalogue and Certifications from header (desktop and mobile). Catalogue still reachable from the Bagasse Tableware card/menu; footer links unchanged.
