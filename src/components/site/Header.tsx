@@ -2,11 +2,15 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 
-const businesses = [
-  { label: "Face Veneer", to: "/", search: { division: "Face Veneer" }, hash: "inquiry" },
-  { label: "Fresh Produce & Agriculture", to: "/produce" },
-  { label: "Sustainable Tableware", to: "/tableware" },
-] as const;
+function BusinessLinks({ className }: { className: string }) {
+  return (
+    <>
+      <Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className={className}>Face Veneer</Link>
+      <Link to="/produce" className={className}>Fresh Produce &amp; Agriculture</Link>
+      <Link to="/tableware" className={className}>Sustainable Tableware</Link>
+    </>
+  );
+}
 
 export function Logo({ large = false }: { large?: boolean }) {
   return (
@@ -38,17 +42,7 @@ export function Header() {
           </button>
           <div className="invisible absolute left-0 top-full z-30 w-64 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
             <div className="border border-border bg-card py-2 shadow-lg">
-              {businesses.map((b) => (
-                <Link
-                  key={b.label}
-                  to={b.to}
-                  search={"search" in b ? b.search : undefined}
-                  hash={"hash" in b ? b.hash : undefined}
-                  className="block px-5 py-2.5 text-sm hover:bg-secondary hover:text-gold"
-                >
-                  {b.label}
-                </Link>
-              ))}
+              <BusinessLinks className="block px-5 py-2.5 text-sm hover:bg-secondary hover:text-gold" />
             </div>
           </div>
         </div>
@@ -70,17 +64,7 @@ export function Header() {
       {open && (
         <div className="absolute inset-x-0 top-[84px] z-40 border-b border-border bg-background px-6 py-6 lg:hidden">
           <div className="flex flex-col gap-4" onClick={() => setOpen(false)}>
-            {businesses.map((b) => (
-              <Link
-                key={b.label}
-                to={b.to}
-                search={"search" in b ? b.search : undefined}
-                hash={"hash" in b ? b.hash : undefined}
-                className={navCls}
-              >
-                {b.label}
-              </Link>
-            ))}
+            <BusinessLinks className={navCls} />
             <Link to="/tableware" className={navCls}>Catalogue</Link>
             <Link to="/" hash="about" className={navCls}>About us</Link>
             <Link to="/" hash="certifications" className={navCls}>Certifications</Link>

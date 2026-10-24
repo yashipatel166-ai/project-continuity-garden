@@ -13,7 +13,7 @@ const field =
   "w-full border-0 border-b border-forest-line bg-transparent py-2.5 text-sm tracking-wide text-forest-foreground placeholder:text-forest-muted/70 focus:border-gold focus:outline-none";
 const label = "mb-1 block text-[0.7rem] tracking-[0.08em] uppercase text-forest-muted";
 
-export function InquiryForm({ division, product }: { division?: string; product?: string }) {
+export function InquiryForm({ division, product }: { division?: string | undefined; product?: string | undefined }) {
   const [div, setDiv] = useState(division ?? "");
   const [spec, setSpec] = useState(product ?? "");
   const [sent, setSent] = useState(false);

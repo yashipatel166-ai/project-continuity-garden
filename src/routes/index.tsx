@@ -3,12 +3,12 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Eyebrow, Heading } from "@/components/site/Ui";
 import { InquiryForm } from "@/components/site/InquiryForm";
 
-type Search = { division?: string; product?: string };
+type Search = { division?: string | undefined; product?: string | undefined };
 
 export const Route = createFileRoute("/")({
   validateSearch: (s: Record<string, unknown>): Search => ({
-    division: typeof s.division === "string" ? s.division : undefined,
-    product: typeof s.product === "string" ? s.product : undefined,
+    division: typeof s["division"] === "string" ? s["division"] : undefined,
+    product: typeof s["product"] === "string" ? s["product"] : undefined,
   }),
   head: () => ({
     meta: [
