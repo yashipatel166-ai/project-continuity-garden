@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "AAVYA GLOBEX — Global sourcing. Trusted trade." },
-      { name: "description", content: "Face veneer, fresh produce and sustainable tableware — imported and exported for buyers worldwide." },
+      { name: "description", content: "Garjan face veneer, pomegranates and bagasse tableware — imported and exported for buyers worldwide." },
       { property: "og:title", content: "AAVYA GLOBEX — Global sourcing. Trusted trade." },
       { property: "og:description", content: "India-based import–export company: face veneer, pomegranates and bagasse tableware." },
       { property: "og:type", content: "website" },
@@ -24,12 +24,10 @@ export const Route = createFileRoute("/")({
 });
 
 const story = [
-  "As the family business grew, we expanded into face veneer, building on our experience in timber while exploring new opportunities within the wood industry.",
-  "Alongside our work in timber, our family has also ventured into agriculture, including pomegranate farming — giving us another connection to the land, natural resources and the value of working closely with what we source.",
-  "As the next generation, we wanted to take this entrepreneurial foundation beyond the businesses we grew up around. That journey led us to international trade and sustainable foodservice products.",
-  "Today, we are building our own export business, working with carefully selected Indian manufacturing partners to bring sugarcane bagasse tableware to foodservice businesses, distributors and buyers across international markets.",
-  "Our approach comes from what we have learned over the years: source carefully, understand the product, work with the right partners and build relationships for the long term.",
-  "From timber to face veneer, from agriculture to global exports — our journey continues to evolve.",
+  ["Our roots", "A family business built on timber, giving us a deep understanding of natural materials, sourcing and quality."],
+  ["Growth", "We expanded into face veneer and pomegranate farming on our own land in Gujarat."],
+  ["Today", "The next generation is building an export business in bagasse tableware with trusted Indian manufacturing partners."],
+  ["Our approach", "Source carefully, understand the product, work with the right partners and build long-term relationships."],
 ];
 
 const docs = [
@@ -51,7 +49,7 @@ function Home() {
             <em className="italic text-gold">Trusted<br />trade.</em>
           </h1>
           <p className="mt-10 max-w-md leading-7 text-muted-foreground">
-            Face veneer, fresh produce and sustainable tableware — imported and exported for buyers worldwide.
+            Garjan face veneer, pomegranates and bagasse tableware — imported and exported for buyers worldwide.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <a href="#businesses" className="inline-flex items-center gap-5 bg-primary px-5 py-4 text-sm font-semibold text-primary-foreground hover:opacity-90">
@@ -92,57 +90,23 @@ function Home() {
         </div>
       </section>
 
-      {/* Story */}
-      <section className="container-site grid gap-12 py-20 lg:grid-cols-[1fr_1.15fr]">
-        <div className="lg:border-r lg:border-border lg:pr-10">
-          <Eyebrow>Our story</Eyebrow>
-          <Heading main={<>Rooted in<br />our</>} accent="heritage." className="mt-6 text-5xl md:text-[4.2rem]" />
-          <p className="mt-8 font-display text-xl italic text-gold">Growing into a new generation of global trade.</p>
-        </div>
-        <div>
-          <p className="text-lg leading-8 text-primary first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-6xl first-letter:leading-[0.9]">
-            Our story begins with a family business built around timber — a business that gave us a deep understanding of natural materials, sourcing, quality and long-term trade relationships.
-          </p>
-          {story.map((t) => (
-            <p key={t.slice(0, 20)} className="mt-6 text-[0.95rem] leading-7 text-muted-foreground">{t}</p>
-          ))}
-          <blockquote className="mt-10 border-l-4 border-gold bg-forest px-8 py-8 font-display text-xl leading-8 text-forest-foreground">
-            Rooted in our family heritage.<br />Built by the next generation.<br />Growing towards a global future.
-          </blockquote>
-        </div>
-      </section>
-
       {/* Businesses */}
       <section id="businesses" className="container-site scroll-mt-4 py-24">
         <Eyebrow>Our businesses</Eyebrow>
         <Heading main={<>Three divisions.<br /></>} accent="One partner." className="mt-6 text-5xl md:text-[4.2rem]" />
         <div className="mt-14 grid gap-4 md:grid-cols-3">
-          <DivisionCard n="01" tag="Import / Face Veneer" img="/veneer.jpg" bar="border-muted-foreground" title={<>Face<br />Veneer</>}
+          <DivisionCard n="01" tag="Import / Face Veneer" img="/veneer.jpg" bar="border-muted-foreground" title={<>Garjan Face<br />Veneer</>}
             body="Premium face veneer from established international origins, sourced for buyers who value consistency."
-            chips="Indonesian Face Veneer"
+            chips="Garjan Face Veneer"
             link={<Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className="link-underline text-primary">Explore this business <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
-          <DivisionCard n="02" tag="Export / Agriculture" img="/pomegranate.jpg" bar="border-pomegranate" title={<>Fresh Produce &amp;<br />Agriculture</>}
+          <DivisionCard n="02" tag="Export / Agriculture" img="/pomegranate.jpg" bar="border-pomegranate" title={<>Pomegranate</>}
             body="From our own farms and trusted growers to international markets, with pomegranate at the heart of what we do."
-            chips="Our Pomegranates • Sourced Produce"
+            chips="Our Pomegranates • Own Farms, Gujarat"
             link={<Link to="/produce" className="link-underline text-primary">See our farms <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
           <DivisionCard n="03" tag="Export / Sustainable Products" img="/bagasse-plates.jpg" bar="border-primary" title={<>Sustainable<br />Tableware</>}
             body={<><span className="block text-xs font-bold tracking-[0.12em] text-primary">CORE FOODSERVICE RANGE</span>Sugarcane Bagasse | Export Ready | B2B Supply</>}
-            chips="Plates • Bowls • Meal Trays • Takeaway Clamshells"
+            chips="Bagasse Tableware • Plates • Bowls • Meal Trays • Clamshells"
             link={<Link to="/tableware" className="link-underline text-primary">View catalogue <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
-        </div>
-      </section>
-
-      {/* Origins */}
-      <section className="bg-sand py-28">
-        <div className="container-site grid items-center gap-14 lg:grid-cols-2">
-          <div>
-            <Eyebrow>Our origins</Eyebrow>
-            <Heading main={<>Rooted at<br />origin.<br /></>} accent={<>Reaching the<br />world.</>} className="mt-6 text-5xl md:text-[4.2rem]" />
-          </div>
-          <div className="grid border border-border sm:grid-cols-2">
-            <OriginCell n="01" name="Indonesia" items={["Face Veneer"]} />
-            <OriginCell n="02" name="India" items={["Pomegranates", "Bagasse tableware"]} border />
-          </div>
         </div>
       </section>
 
@@ -197,6 +161,24 @@ function Home() {
         </div>
       </section>
 
+      {/* Story */}
+      <section id="story" className="container-site scroll-mt-4 grid gap-12 border-t border-border py-24 lg:grid-cols-[1fr_1.4fr]">
+        <div>
+          <Eyebrow>Our story</Eyebrow>
+          <Heading main={<>Rooted in<br />our</>} accent="heritage." className="mt-6 text-5xl md:text-[4.2rem]" />
+          <p className="mt-8 font-display text-xl italic text-gold">Growing into a new generation of global trade.</p>
+        </div>
+        <ol className="grid gap-4 sm:grid-cols-2">
+          {story.map(([title, text], i) => (
+            <li key={title} className="border border-border border-t-2 border-t-gold bg-card p-6">
+              <p className="font-mono text-xs tracking-[0.2em] text-gold">0{i + 1}</p>
+              <h3 className="mt-3 font-display text-2xl text-primary">{title}</h3>
+              <p className="mt-3 leading-7 text-muted-foreground">{text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
       <InquiryForm division={division} product={product} />
     </>
   );
@@ -220,15 +202,5 @@ function DivisionCard(props: {
         <div className="mt-5">{props.link}</div>
       </div>
     </article>
-  );
-}
-
-function OriginCell({ n, name, items, border }: { n: string; name: string; items: string[]; border?: boolean }) {
-  return (
-    <div className={`relative p-7 pb-12 ${border ? "border-t border-border sm:border-t-0 sm:border-l" : ""}`}>
-      <span className="absolute top-6 right-6 font-mono text-xs text-gold">{n}</span>
-      <h3 className="font-display text-3xl text-primary">{name}</h3>
-      {items.map((i) => <p key={i} className="mt-2 text-xs text-muted-foreground">{i}</p>)}
-    </div>
   );
 }
