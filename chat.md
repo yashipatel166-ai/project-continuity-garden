@@ -80,3 +80,7 @@ _Last updated: 2026-10-24_
 ## Update 2026-10-24 — `hub_prompt8103.txt`
 - Error reported (`src/App.tsx` TS2551 variant): file does not exist in this project; nothing to fix. Followed the file instead.
 - Admin: every photo/video now has a "Shape (layout)" choice (original, 16:9, 9:16, 21:9 widescreen, 4:3, 3:4, 1:1) and manual crop (zoom 100–300%, move left/right, up/down) with a live preview. Saved with "Save size, shape & crop".
+
+## Update 2026-10-24 — `context1524.txt` / `input1862.txt`
+- Error reported (`src/lib/utils.ts` TS2532): utils.ts line 5 is a safe one-line `cn()` helper; nothing undefined there, nothing to fix. `input1862.txt` contained no request.
+- Request: bigger body/information text. Small text sizes enlarged site-wide in src/styles.css (small text ~15px→~18px, extra-small ~13px→~15px).
