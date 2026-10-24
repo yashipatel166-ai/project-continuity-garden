@@ -3,6 +3,7 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Eyebrow, Heading } from "@/components/site/Ui";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { useContent } from "@/hooks/use-content";
+import { mediaStyle } from "@/lib/content-fields";
 
 type Search = { division?: string | undefined; product?: string | undefined };
 
@@ -39,7 +40,7 @@ function Home() {
     <>
       {/* Hero */}
       <section className="container-site grid items-center gap-14 pt-12 pb-28 lg:grid-cols-2">
-        <div className="animate-rise">
+        <div className={`animate-rise ${c("hero_layout") === "left" ? "lg:order-2" : ""}`}>
           <Eyebrow line>{c("hero_eyebrow")}</Eyebrow>
           <h1 className="display mt-8 text-7xl text-primary md:text-[6.2rem]">
             Global<br />sourcing.<br />
@@ -57,8 +58,8 @@ function Home() {
         </div>
         <div className="relative animate-rise [animation-delay:150ms]">
           <div className="absolute -bottom-6 -left-6 h-28 w-28 bg-gold" />
-          <div className="relative aspect-[1.1] overflow-hidden">
-            <img src={c("hero_image")} alt="Container ship at port" className="h-full w-full object-cover" />
+          <div className="relative overflow-hidden bg-secondary">
+            <img src={c("hero_image")} alt="Container ship at port" style={mediaStyle(c, "hero_image", 560)} className="w-full" />
             <div className="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent" />
             <div className="absolute top-8 right-8 flex h-24 w-24 flex-col items-center justify-center rounded-full border border-forest-foreground/70 text-forest-foreground">
               <span className="font-mono text-[0.55rem] tracking-[0.2em]">EST.</span>
@@ -92,15 +93,15 @@ function Home() {
         <Eyebrow>Our businesses</Eyebrow>
         <Heading main={<>Three divisions.<br /></>} accent="One partner." className="mt-6 text-5xl md:text-[4.2rem]" />
         <div className="mt-14 grid gap-4 md:grid-cols-3">
-          <DivisionCard n="01" tag="Import / Face Veneer" img={c("veneer_image")} bar="border-muted-foreground" title={<>Garjan Face<br />Veneer</>}
+          <DivisionCard n="01" tag="Import / Face Veneer" img={c("veneer_image")} imgStyle={mediaStyle(c, "veneer_image", 280)} bar="border-muted-foreground" title={<>Garjan Face<br />Veneer</>}
             body={c("veneer_text")}
             chips="Garjan Face Veneer"
             link={<Link to="/" search={{ division: "Face Veneer" }} hash="inquiry" className="link-underline text-primary">Explore this business <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
-          <DivisionCard n="02" tag="Export / Agriculture" img={c("pomegranate_image")} bar="border-pomegranate" title={<>Pomegranate</>}
+          <DivisionCard n="02" tag="Export / Agriculture" img={c("pomegranate_image")} imgStyle={mediaStyle(c, "pomegranate_image", 280)} bar="border-pomegranate" title={<>Pomegranate</>}
             body={c("pomegranate_text")}
             chips="Our Pomegranates • Own Farms, Gujarat"
             link={<Link to="/produce" className="link-underline text-primary">See our farms <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
-          <DivisionCard n="03" tag="Export / Sustainable Products" img={c("tableware_image")} bar="border-primary" title={<>Sustainable<br />Tableware</>}
+          <DivisionCard n="03" tag="Export / Sustainable Products" img={c("tableware_image")} imgStyle={mediaStyle(c, "tableware_image", 280)} bar="border-primary" title={<>Sustainable<br />Tableware</>}
             body={<><span className="block text-xs font-bold tracking-[0.12em] text-primary">CORE FOODSERVICE RANGE</span>{c("tableware_text")}</>}
             chips="Bagasse Tableware • Plates • Bowls • Meal Trays • Clamshells"
             link={<Link to="/tableware" className="link-underline text-primary">View catalogue <ArrowUpRight className="h-3.5 w-3.5" /></Link>} />
@@ -109,8 +110,8 @@ function Home() {
 
       {/* Farm story */}
       <section className="grid lg:grid-cols-2">
-        <div className="relative min-h-[420px]">
-          <video key={c("farm_video")} src={c("farm_video")} autoPlay muted loop playsInline poster="/farm.jpg" className="absolute inset-0 h-full w-full object-cover" />
+        <div className={`relative bg-forest ${c("farm_layout") === "right" ? "lg:order-2" : ""}`}>
+          <video key={c("farm_video")} src={c("farm_video")} autoPlay muted loop playsInline poster="/farm.jpg" style={mediaStyle(c, "farm_video", 620)} className="w-full lg:h-full" />
           <span className="absolute bottom-6 left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
             OUR POMEGRANATE FARM · GUJARAT
           </span>
@@ -179,12 +180,12 @@ function Home() {
 }
 
 function DivisionCard(props: {
-  n: string; tag: string; img: string; bar: string; title: React.ReactNode; body: React.ReactNode; chips: string; link: React.ReactNode;
+  n: string; tag: string; img: string; imgStyle: React.CSSProperties; bar: string; title: React.ReactNode; body: React.ReactNode; chips: string; link: React.ReactNode;
 }) {
   return (
     <article className="group flex flex-col border border-border bg-card">
-      <div className={`relative aspect-[1.35] overflow-hidden border-b-4 ${props.bar}`}>
-        <img src={props.img} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      <div className={`relative overflow-hidden bg-secondary border-b-4 ${props.bar}`}>
+        <img src={props.img} alt="" style={props.imgStyle} className="w-full transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/50 to-transparent" />
         <span className="absolute top-5 left-4 font-mono text-xs text-forest-foreground">{props.n}</span>
         <span className="absolute bottom-5 left-4 font-mono text-[0.65rem] tracking-[0.15em] uppercase text-forest-foreground">{props.tag}</span>

@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CtaBand, Eyebrow, Heading } from "@/components/site/Ui";
 import { useContent } from "@/hooks/use-content";
+import { mediaStyle } from "@/lib/content-fields";
 
 export const Route = createFileRoute("/produce")({
   head: () => ({
     meta: [
       { title: "Fresh Produce & Pomegranates — AAVYA GLOBEX" },
-      { name: "description", content: "Pomegranates from our own farms in Khirsara, Gujarat — graded, packed and documented for export." },
+      { name: "description", content: "Pomegranates grown in Khirsara, Gujarat — graded, packed and documented for export." },
       { property: "og:title", content: "Fresh Produce & Pomegranates — AAVYA GLOBEX" },
-      { property: "og:description", content: "From our farms in Gujarat to global markets." },
+      { property: "og:description", content: "Gujarat-grown pomegranates for buyers worldwide." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -56,16 +57,16 @@ function Produce() {
       </section>
 
       <section className="container-site pb-28">
-        <div className="relative aspect-video overflow-hidden">
-          <video key={c("video")} src={c("video")} autoPlay muted loop playsInline poster="/farm.jpg" className="h-full w-full object-cover" />
+        <div className="relative overflow-hidden bg-secondary">
+          <video key={c("video")} src={c("video")} autoPlay muted loop playsInline poster="/farm.jpg" style={mediaStyle(c, "video", 640)} className="w-full" />
           <span className="absolute bottom-6 left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
             OUR POMEGRANATE FARM · GUJARAT
           </span>
         </div>
-        <div className="mt-4 grid auto-rows-[260px] gap-4 md:grid-cols-4">
+        <div className="mt-4 grid gap-4 md:grid-cols-4">
           {gallery.map((g, i) => (
-            <figure key={g.src} className={`group overflow-hidden ${g.cls}`} title={g.alt}>
-              <img src={c(`g${i + 1}`)} alt={g.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <figure key={g.src} className={`group overflow-hidden bg-secondary ${g.cls}`} title={g.alt}>
+              <img src={c(`g${i + 1}`)} alt={g.alt} loading="lazy" style={mediaStyle(c, `g${i + 1}`, g.cls.includes("row-span") ? 536 : 260)} className="w-full transition-transform duration-700 group-hover:scale-105" />
             </figure>
           ))}
         </div>

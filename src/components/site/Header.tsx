@@ -15,13 +15,13 @@ function BusinessLinks({ className }: { className: string }) {
 export function Logo({ large = false }: { large?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-3">
-      <img src="/logo-mark.png" alt="" className={large ? "h-14 w-auto" : "h-10 w-auto"} />
-      <span className={large ? "text-2xl font-medium" : "text-base tracking-[0.12em]"}>
+      <img src="/logo-mark.png" alt="" className={large ? "h-16 w-auto" : "h-12 w-auto"} />
+      <span className={large ? "text-3xl font-bold" : "text-xl font-bold tracking-[0.12em] md:text-2xl"}>
         {large ? (
           "Aavya Globex"
         ) : (
           <>
-            <b className="font-bold">AAVYA</b> GLOBEX
+            <b className="font-extrabold">AAVYA</b> GLOBEX
           </>
         )}
       </span>
