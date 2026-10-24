@@ -134,3 +134,8 @@ _Last updated: 2026-10-24_
 ## 2026-10-24 — Ship photo on phones (query2352.txt)
 - Home hero ship photo on phones/tablets now uses the desktop framing (≈538:560) instead of a tall crop, so the whole ship shows like on desktop. Only applies when no custom shape is chosen in /admin.
 - EST. 2026 badge, caption and gold square scaled down on phones. Checked at 393×852.
+
+## 2026-10-24 — Phone shows desktop-like layout on aavyaglobex.com (prompt127hub8475.txt + 4 screenshots)
+- Cause found: aavyaglobex.com (GoDaddy) uses "forwarding with masking" — it shows the Lovable site inside a frame page that lacks phone display settings, so iPhones render it at desktop width (~980px). The site itself (project-continuity-garden.lovable.app) is fine on phones.
+- Not fixable in site code. Fix: connect aavyaglobex.com directly in Lovable (Project settings → Domains) and turn off GoDaddy forwarding/masking.
+- Pending: user to connect the domain.
