@@ -106,3 +106,4 @@ _Last updated: 2026-10-24_
 - Request: review security logs, fix confirmed issues, and prepare the entire website for publishing. Preparation is requested; no deployment has been scheduled in this task.
 - Reported `src/main.tsx` TS18048: this project has no `src/main.tsx`; inspect actual callbacks rather than create an unrelated entry file.
 - Fresh backend scan found one informational public-content-read finding. Dependency scan found vulnerable transitive packages; remediation and verification are in progress.
+- `prompt1840.txt` repeats the publishing-preparation request. Additional reported TS2488/TS2741 errors refer to absent `src/pages/NotFound.tsx` and `src/pages/Index.tsx`; no equivalent error has been reproduced.
