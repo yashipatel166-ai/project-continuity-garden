@@ -162,3 +162,8 @@ font { font: inherit; color: inherit; letter-spacing: inherit; }
 :is(html.translated-ltr, html.translated-rtl) :is(p, li, dd, dt) { line-height: 1.75; }
 :is(html.translated-ltr, html.translated-rtl) .link-underline { flex-wrap: wrap; text-align: start; }
 :is(html.translated-ltr, html.translated-rtl) header nav { gap: 1.5rem; }
+
+/* Phones/tablets: show the hero ship photo with the same framing as the desktop view (desktop column ≈ 538×560). */
+@media (max-width: 1023px) {
+  .hero-phone-frame { height: auto !important; aspect-ratio: 538 / 560; }
+}
