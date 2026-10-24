@@ -76,3 +76,7 @@ _Last updated: 2026-10-24_
 ## Update 2026-10-24 — `instruction5556.txt`
 - Error reported (`src/lib/utils.ts` TS7006 useCallback): utils.ts has no such parameter; nothing to fix. Followed the file instead.
 - Request: remove all Lovable branding/badge. Added `#lovable-badge { display:none !important; ... }` to src/styles.css. Badge on the published site is controlled by the project's "Hide Lovable badge" setting (needs a paid plan). Lovable sign-in code in /admin is functional (Google login), not branding — kept.
+
+## Update 2026-10-24 — `hub_prompt8103.txt`
+- Error reported (`src/App.tsx` TS2551 variant): file does not exist in this project; nothing to fix. Followed the file instead.
+- Admin: every photo/video now has a "Shape (layout)" choice (original, 16:9, 9:16, 21:9 widescreen, 4:3, 3:4, 1:1) and manual crop (zoom 100–300%, move left/right, up/down) with a live preview. Saved with "Save size, shape & crop".

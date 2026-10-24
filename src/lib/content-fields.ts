@@ -63,14 +63,46 @@ export const PAGES: { id: PageId; label: string; fields: Field[] }[] = [
   },
 ];
 
+export const RATIOS = [
+  { value: "auto", label: "Original layout" },
+  { value: "16/9", label: "16:9 (landscape)" },
+  { value: "9/16", label: "9:16 (portrait / phone)" },
+  { value: "21/9", label: "21:9 (widescreen)" },
+  { value: "4/3", label: "4:3" },
+  { value: "3/4", label: "3:4" },
+  { value: "1/1", label: "1:1 (square)" },
+];
+
 export function defaultFor(page: PageId, key: string): string {
-  if (key.endsWith("__size")) return "100";
+  if (key.endsWith("__size") || key.endsWith("__zoom")) return "100";
   if (key.endsWith("__fit")) return "cover";
+  if (key.endsWith("__ratio")) return "auto";
+  if (key.endsWith("__x") || key.endsWith("__y")) return "50";
   return PAGES.find((p) => p.id === page)?.fields.find((f) => f.key === key)?.default ?? "";
 }
 
-/** Size (percent) and fit chosen in the admin for a photo/video field. */
+/** Size, fit, shape (aspect ratio) and crop chosen in the admin for a photo/video field. */
 export function mediaStyle(c: (k: string) => string, key: string, baseHeight: number): React.CSSProperties {
   const pct = Number(c(`${key}__size`)) || 100;
-  return { height: Math.round((baseHeight * pct) / 100), objectFit: c(`${key}__fit`) === "contain" ? "contain" : "cover" };
+  const ratio = c(`${key}__ratio`);
+  const x = Number(c(`${key}__x`) || 50);
+  const y = Number(c(`${key}__y`) || 50);
+  const zoom = Number(c(`${key}__zoom`)) || 100;
+  const style: React.CSSProperties = {
+    objectFit: c(`${key}__fit`) === "contain" ? "contain" : "cover",
+    objectPosition: `${x}% ${y}%`,
+  };
+  if (ratio && ratio !== "auto") {
+    style.aspectRatio = ratio;
+    style.height = "auto";
+    style.width = `${Math.min(pct, 100)}%`;
+    style.marginInline = "auto";
+  } else {
+    style.height = Math.round((baseHeight * pct) / 100);
+  }
+  if (zoom > 100) {
+    style.transform = `scale(${zoom / 100})`;
+    style.transformOrigin = `${x}% ${y}%`;
+  }
+  return style;
 }
