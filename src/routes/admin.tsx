@@ -116,6 +116,8 @@ function Editor({ email, onSignOut }: { email: string; onSignOut: () => void }) 
             page={page}
             field={f}
             saved={rows.find((r) => r.page === page && r.key === f.key)?.value ?? ""}
+            savedSize={rows.find((r) => r.page === page && r.key === `${f.key}__size`)?.value ?? ""}
+            savedFit={rows.find((r) => r.page === page && r.key === `${f.key}__fit`)?.value ?? ""}
             onSaved={() => qc.invalidateQueries({ queryKey: contentQueryKey })}
           />
         ))}
@@ -124,7 +126,21 @@ function Editor({ email, onSignOut }: { email: string; onSignOut: () => void }) 
   );
 }
 
-function FieldEditor({ page, field, saved, onSaved }: { page: PageId; field: Field; saved: string; onSaved: () => void }) {
+function FieldEditor({ page, field, saved, savedSize, savedFit, onSaved }: { page: PageId; field: Field; saved: string; savedSize: string; savedFit: string; onSaved: () => void }) {
+  const [size, setSize] = useState(Number(savedSize) || 100);
+  const [fit, setFit] = useState(savedFit || "cover");
+  useEffect(() => setSize(Number(savedSize) || 100), [savedSize]);
+  useEffect(() => setFit(savedFit || "cover"), [savedFit]);
+  const saveDisplay = async () => {
+    setStatus("Saving…");
+    const now = new Date().toISOString();
+    const { error } = await supabase.from("site_content").upsert([
+      { page, key: `${field.key}__size`, value: String(size), updated_at: now },
+      { page, key: `${field.key}__fit`, value: fit, updated_at: now },
+    ]);
+    setStatus(error ? `Error: ${error.message}` : "Saved");
+    if (!error) onSaved();
+  };
   const [value, setValue] = useState(saved || field.default);
   const [status, setStatus] = useState("");
   useEffect(() => setValue(saved || field.default), [saved, field.default]);
@@ -166,6 +182,27 @@ function FieldEditor({ page, field, saved, onSaved }: { page: PageId; field: Fie
             <input type="file" accept={field.type === "image" ? "image/*" : "video/*"} className="hidden" onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])} />
           </label>
           {saved && <button onClick={() => { setValue(field.default); save(""); }} className="text-sm text-muted-foreground underline">Restore original</button>}
+          <div className="flex w-full flex-wrap items-end gap-5 border-t border-border pt-4">
+            <label className="flex flex-col gap-1 text-sm">
+              <span>Size on the website: <b>{size}%</b></span>
+              <input type="range" min={40} max={180} step={5} value={size} onChange={(e) => setSize(Number(e.target.value))} className="w-64 accent-primary" />
+            </label>
+            <label className="flex flex-col gap-1 text-sm">
+              <span>How it fills the space</span>
+              <select value={fit} onChange={(e) => setFit(e.target.value)} className="border border-input bg-background p-2">
+                <option value="cover">Fill the space (may crop edges)</option>
+                <option value="contain">Show the whole {field.type}</option>
+              </select>
+            </label>
+            <button onClick={saveDisplay} className="bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Save size</button>
+            <button onClick={() => { setSize(100); setFit("cover"); }} className="text-sm text-muted-foreground underline">Reset size</button>
+          </div>
+        </div>
+      ) : field.type === "select" ? (
+        <div className="mt-3 flex flex-wrap items-center gap-4">
+          <select value={value} onChange={(e) => { setValue(e.target.value); save(e.target.value); }} className="border border-input bg-background p-2">
+            {field.options?.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+          </select>
         </div>
       ) : (
         <div className="mt-3">
