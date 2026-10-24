@@ -102,12 +102,12 @@ export function LanguageSwitcher() {
         aria-label="Choose language"
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 rounded-full border border-border py-1.5 pl-1.5 pr-3 text-sm font-semibold transition-colors hover:border-gold"
+        className="flex items-center gap-2 rounded-full border border-border p-1.5 text-sm sm:pr-3 font-semibold transition-colors hover:border-gold"
       >
         <span className="flex h-6 w-6 items-center justify-center rounded-full bg-secondary">
           <Globe className="h-3.5 w-3.5 text-gold" />
         </span>
-        <span className="max-w-[9rem] truncate">{lang === "en" || !active ? "Language" : active[1]}</span>
+        <span className="hidden max-w-[9rem] truncate sm:inline">{lang === "en" || !active ? "Language" : active[1]}</span>
       </button>
       {open && (
         <div className="absolute right-0 top-full z-50 mt-2 w-72 border border-border bg-card shadow-lg">

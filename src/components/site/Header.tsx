@@ -15,9 +15,9 @@ function BusinessLinks({ className }: { className: string }) {
 
 export function Logo({ large = false }: { large?: boolean }) {
   return (
-    <Link to="/" className="notranslate flex items-center gap-3" translate="no">
+    <Link to="/" className="notranslate flex shrink-0 items-center gap-3 whitespace-nowrap" translate="no">
       <img src="/logo-mark.png" alt="" className={large ? "h-16 w-auto" : "h-12 w-auto"} />
-      <span className={large ? "text-3xl font-bold" : "text-xl font-bold tracking-[0.12em] md:text-2xl"}>
+      <span className={large ? "text-3xl font-bold" : "text-lg font-bold tracking-[0.12em] sm:text-xl md:text-2xl"}>
         {large ? (
           "Aavya Globex"
         ) : (
@@ -50,7 +50,7 @@ export function Header() {
         <Link to="/" hash="about" className={navCls}>About us</Link>
         <Link to="/" hash="inquiry" className={navCls}>Contact</Link>
       </nav>
-      <div className="flex items-center gap-4">
+      <div className="flex shrink-0 items-center gap-3">
         <LanguageSwitcher />
         <Link
           to="/"
