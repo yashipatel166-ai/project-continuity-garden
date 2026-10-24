@@ -72,3 +72,7 @@ _Last updated: 2026-10-24_
 - Admin: every photo/video now has a size slider (40–180%) and "Fill the space / Show whole" option. New layout options: hero image left/right, farm video left/right.
 - Logo text larger and bold (header + footer).
 - About text rewritten; pomegranate texts reworded to avoid repeating "own farms and trusted growers" (wording written by the AI — user may confirm/replace in /admin).
+
+## Update 2026-10-24 — `instruction5556.txt`
+- Error reported (`src/lib/utils.ts` TS7006 useCallback): utils.ts has no such parameter; nothing to fix. Followed the file instead.
+- Request: remove all Lovable branding/badge. Added `#lovable-badge { display:none !important; ... }` to src/styles.css. Badge on the published site is controlled by the project's "Hide Lovable badge" setting (needs a paid plan). Lovable sign-in code in /admin is functional (Google login), not branding — kept.
