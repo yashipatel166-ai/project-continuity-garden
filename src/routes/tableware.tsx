@@ -115,7 +115,7 @@ function ProductCard({ p }: { p: Product }) {
             </div>
           ))}
         </dl>
-        <div className="mt-auto flex items-center justify-between pt-5">
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-5">
           <button onClick={() => setOpen(!open)} className="link-underline gap-3 text-xs text-primary">
             {open ? "Less" : "Full specs"} <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
           </button>
