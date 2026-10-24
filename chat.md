@@ -17,12 +17,14 @@ _Last updated: 2026-10-24_
 - **`/produce`**: hero + facts, farm video, 5-photo gallery, CTA.
 - **`/tableware`**: 23-product catalogue with filters (All / Plates / Meal Trays / Clamshells / Bowls), "Full specs" toggle, Request quote, "Need something else?" card, CTA.
 - Shared header (with Our businesses dropdown, mobile menu) and footer.
-- Design copied from reference: ivory background, forest green, warm gold; fonts Playfair Display / Manrope / DM Mono.
+- Design copied from reference: ivory background, forest green, warm gold; fonts Playfair Display / Source Sans 3 (body, larger size) / DM Mono.
 - All reference photos, farm video, logo, favicon and certificate PDFs copied into `public/` (same paths as reference).
 - "Request quote" buttons pre-fill the form's division/product via `/?division=…&product=…#inquiry` (same as reference).
 
 ## 3. Requested changes
 - 2026-10-24: Replicate reference site exactly — DONE (first version).
+- 2026-10-24 (`instruction3741.txt`): Garjan Face Veneer added; Fresh Produce renamed Pomegranate; Bagasse Tableware added under Sustainable Tableware; Our Story moved to end of home page, shortened into 4 cards; Our Origins (Indonesia/India) removed; body font changed to Source Sans 3 and text enlarged; videos confirmed looping (`loop` attribute) — DONE.
+- Admin panel (Google login, authorized Gmail only, edit text/images/videos per page) — PENDING: needs the list of allowed Gmail addresses and Lovable Cloud.
 
 ## 4. Errors / bugs
 - User reported `src/pages/NotFound.tsx(12,20): TS2345 string | undefined`. That file **does not exist** in this project (this app has no `src/pages` folder), so it could not be fixed directly. While building, several similar "string | undefined" type errors appeared and were fixed. Project now typechecks with zero errors.
@@ -51,6 +53,7 @@ _Last updated: 2026-10-24_
 ## 9. Reference files
 | File | Purpose |
 |------|---------|
+| `instruction3741.txt` (upload, 2026-10-24) | Content/font changes + admin panel request. |
 | `message1040.txt` (upload, 2026-10-24) | Feature spec: replicate the Emergent preview site exactly; no AI images; full implementations. |
 
 ## 10. Key files
