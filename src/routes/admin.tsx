@@ -5,7 +5,7 @@ import { LogOut, Upload } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
-import { PAGES, type Field, type PageId } from "@/lib/content-fields";
+import { PAGES, RATIOS, type Field, type PageId } from "@/lib/content-fields";
 import { contentQueryKey } from "@/hooks/use-content";
 
 export const Route = createFileRoute("/admin")({
@@ -118,6 +118,7 @@ function Editor({ email, onSignOut }: { email: string; onSignOut: () => void }) 
             saved={rows.find((r) => r.page === page && r.key === f.key)?.value ?? ""}
             savedSize={rows.find((r) => r.page === page && r.key === `${f.key}__size`)?.value ?? ""}
             savedFit={rows.find((r) => r.page === page && r.key === `${f.key}__fit`)?.value ?? ""}
+            rows={rows}
             onSaved={() => qc.invalidateQueries({ queryKey: contentQueryKey })}
           />
         ))}
