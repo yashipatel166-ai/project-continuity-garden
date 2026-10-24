@@ -32,9 +32,9 @@ export function Logo({ large = false }: { large?: boolean }) {
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const navCls = "text-xs font-semibold tracking-[0.12em] uppercase hover:text-gold transition-colors";
+  const navCls = "whitespace-nowrap text-xs font-semibold tracking-[0.12em] uppercase hover:text-gold transition-colors";
   return (
-    <header className="container-site flex h-[84px] items-center justify-between">
+    <header className="container-site flex h-[84px] items-center justify-between gap-4">
       <Logo />
       <nav className="hidden items-center gap-8 lg:flex">
         <div className="group relative">
@@ -47,32 +47,28 @@ export function Header() {
             </div>
           </div>
         </div>
-        <Link to="/tableware" className={navCls}>Catalogue</Link>
         <Link to="/" hash="about" className={navCls}>About us</Link>
-        <Link to="/" hash="certifications" className={navCls}>Certifications</Link>
         <Link to="/" hash="inquiry" className={navCls}>Contact</Link>
-        <LanguageSwitcher id="gt-desktop" />
+      </nav>
+      <div className="flex items-center gap-4">
+        <LanguageSwitcher />
         <Link
           to="/"
           hash="inquiry"
-          className="flex items-center gap-1.5 bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground hover:opacity-90"
+          className="hidden items-center gap-1.5 whitespace-nowrap bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground hover:opacity-90 lg:flex"
         >
           Request a quote <ArrowUpRight className="h-3.5 w-3.5" />
         </Link>
-      </nav>
-      <div className="flex items-center gap-4 lg:hidden">
-        <LanguageSwitcher id="gt-mobile" />
-      <button onClick={() => setOpen(!open)} aria-label="Menu">
-        {open ? <X /> : <Menu />}
-      </button>
+        <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
+          {open ? <X /> : <Menu />}
+        </button>
       </div>
       {open && (
         <div className="absolute inset-x-0 top-[84px] z-40 border-b border-border bg-background px-6 py-6 lg:hidden">
           <div className="flex flex-col gap-4" onClick={() => setOpen(false)}>
             <BusinessLinks className={navCls} />
-            <Link to="/tableware" className={navCls}>Catalogue</Link>
             <Link to="/" hash="about" className={navCls}>About us</Link>
-            <Link to="/" hash="certifications" className={navCls}>Certifications</Link>
+            <Link to="/" hash="inquiry" className={navCls}>Contact</Link>
             <Link to="/" hash="inquiry" className="bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground">
               Request a quote
             </Link>
