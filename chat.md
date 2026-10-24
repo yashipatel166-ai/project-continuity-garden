@@ -101,3 +101,8 @@ _Last updated: 2026-10-24_
 ## Update 2026-10-24 — `context7380.txt`
 - Error reported (`src/pages/NotFound.tsx` TS2741): file does not exist; nothing to fix.
 - Request: after changing language, text overlapped/misplaced; must look like English on desktop + mobile. Fix: styles that only apply when a page is translated — smaller, wrapping headings with taller line spacing, no extra letter-spacing (it broke Indian scripts), long words wrap instead of spilling over pictures, product-card buttons wrap. Logo stays one line and keeps its spacing. On phones the language button shows only the globe icon (avoids clashing with the menu). Tested in Tamil and Hindi on desktop and phone sizes.
+
+## Update 2026-10-24 — `hub_prompt5576.txt` (in progress)
+- Request: review security logs, fix confirmed issues, and prepare the entire website for publishing. Preparation is requested; no deployment has been scheduled in this task.
+- Reported `src/main.tsx` TS18048: this project has no `src/main.tsx`; inspect actual callbacks rather than create an unrelated entry file.
+- Fresh backend scan found one informational public-content-read finding. Dependency scan found vulnerable transitive packages; remediation and verification are in progress.
