@@ -36,10 +36,10 @@ function Produce() {
   const c = useContent("produce");
   return (
     <>
-      <section className="container-site grid gap-12 pt-12 pb-20 lg:grid-cols-2 lg:items-end">
+      <section className="container-site grid gap-10 pt-8 pb-14 sm:gap-12 sm:pt-12 sm:pb-20 lg:grid-cols-2 lg:items-end">
         <div className="animate-rise">
           <Eyebrow line>Fresh produce &amp; agriculture</Eyebrow>
-          <Heading as="h1" main={<>From our<br />farms<br />to</>} accent={<>global<br />markets.</>} className="mt-8 text-7xl md:text-[6rem]" />
+          <Heading as="h1" main={<>From our<br />farms<br />to</>} accent={<>global<br />markets.</>} className="mt-6 text-5xl sm:mt-8 sm:text-7xl md:text-[6rem]" />
         </div>
         <div>
           <p className="max-w-md text-sm leading-7 text-muted-foreground">
@@ -56,10 +56,10 @@ function Produce() {
         </div>
       </section>
 
-      <section className="container-site pb-28">
+      <section className="container-site pb-16 sm:pb-28">
         <div className="relative overflow-hidden bg-secondary">
           <video key={c("video")} src={c("video")} autoPlay muted loop playsInline poster="/farm.jpg" style={mediaStyle(c, "video", 640)} className="w-full" />
-          <span className="absolute bottom-6 left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
+          <span className="absolute bottom-3 left-3 sm:bottom-6 sm:left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
             OUR POMEGRANATE FARM · GUJARAT
           </span>
         </div>

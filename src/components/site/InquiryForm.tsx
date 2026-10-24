@@ -45,11 +45,11 @@ export function InquiryForm({ division, product }: { division?: string | undefin
   }
 
   return (
-    <section id="inquiry" className="scroll-mt-4 bg-forest py-24 text-forest-foreground">
+    <section id="inquiry" className="scroll-mt-4 bg-forest py-16 sm:py-24 text-forest-foreground">
       <div className="container-site grid gap-16 lg:grid-cols-2">
         <div>
           <Eyebrow>For buyers</Eyebrow>
-          <Heading main="Request" accent={<><br />a quote.</>} light className="mt-6 text-6xl" />
+          <Heading main="Request" accent={<><br />a quote.</>} light className="mt-6 text-5xl sm:text-6xl" />
           <div className="mt-14 border-t border-forest-line pt-6 text-sm">
             <p className="text-forest-muted">Prefer a direct line?</p>
             <a href="mailto:info@aavyaglobex.com" className="mt-2 block hover:text-gold">info@aavyaglobex.com</a>
