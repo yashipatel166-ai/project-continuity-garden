@@ -146,7 +146,7 @@ body { top: 0 !important; position: static !important; }
 font { font: inherit; color: inherit; letter-spacing: inherit; }
 
 /* Translated pages: keep the same layout for every language (scripts like Hindi/Tamil are wider and taller) */
-:is(html.translated-ltr, html.translated-rtl) body * { letter-spacing: normal !important; }
+:is(html.translated-ltr, html.translated-rtl) body *:not(.notranslate, .notranslate *) { letter-spacing: normal !important; }
 :is(html.translated-ltr, html.translated-rtl) :is(h1, h2, h3, h4, p, li, dd, dt, a, button, span, label) { overflow-wrap: anywhere; word-break: normal; }
 :is(html.translated-ltr, html.translated-rtl) :is(.grid, .flex) > * { min-width: 0; }
 :is(html.translated-ltr, html.translated-rtl) :is(h1, h2, h3, .display) { line-height: 1.3 !important; }
