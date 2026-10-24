@@ -14,3 +14,4 @@
 - Site chrome (Header/Footer) is rendered once in src/routes/__root.tsx; pages only render their sections.
 - Quote form prefill uses `/` search params `division` and `product` with `#inquiry`; reuse this instead of new routes.
 - Tableware catalogue data lives in src/lib/tableware.ts so pages stay presentational.
+- Keep security-patched dependency overrides aligned with package.json and bun.lock; transitive versions must not reintroduce known advisories.
