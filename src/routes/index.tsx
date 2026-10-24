@@ -39,10 +39,10 @@ function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="container-site grid items-center gap-14 pt-12 pb-28 lg:grid-cols-2">
+      <section className="container-site grid items-center gap-10 pt-8 pb-16 sm:gap-14 sm:pt-12 sm:pb-28 lg:grid-cols-2">
         <div className={`animate-rise ${c("hero_layout") === "left" ? "lg:order-2" : ""}`}>
           <Eyebrow line>{c("hero_eyebrow")}</Eyebrow>
-          <h1 className="display mt-8 text-7xl text-primary md:text-[6.2rem]">
+          <h1 className="display mt-6 text-[3.4rem] text-primary sm:mt-8 sm:text-7xl md:text-[6.2rem]">
             Global<br />sourcing.<br />
             <em className="italic text-gold">Trusted<br />trade.</em>
           </h1>
@@ -78,7 +78,7 @@ function Home() {
       <section id="about" className="container-site grid scroll-mt-4 gap-10 py-16 lg:grid-cols-2">
         <div>
           <Eyebrow>About us</Eyebrow>
-          <Heading main={<>Connecting origins<br />with</>} accent="opportunity." className="mt-6 text-5xl md:text-[4.2rem]" />
+          <Heading main={<>Connecting origins<br />with</>} accent="opportunity." className="mt-6 text-4xl sm:text-5xl md:text-[4.2rem]" />
         </div>
         <div className="lg:pt-14">
           <p className="max-w-md text-sm leading-7 text-muted-foreground">
@@ -89,9 +89,9 @@ function Home() {
       </section>
 
       {/* Businesses */}
-      <section id="businesses" className="container-site scroll-mt-4 py-24">
+      <section id="businesses" className="container-site scroll-mt-4 py-16 sm:py-24">
         <Eyebrow>Our businesses</Eyebrow>
-        <Heading main={<>Three divisions.<br /></>} accent="One partner." className="mt-6 text-5xl md:text-[4.2rem]" />
+        <Heading main={<>Three divisions.<br /></>} accent="One partner." className="mt-6 text-4xl sm:text-5xl md:text-[4.2rem]" />
         <div className="mt-14 grid gap-4 md:grid-cols-3">
           <DivisionCard n="01" tag="Import / Face Veneer" img={c("veneer_image")} imgStyle={mediaStyle(c, "veneer_image", 280)} bar="border-muted-foreground" title={<>Garjan Face<br />Veneer</>}
             body={c("veneer_text")}
@@ -112,13 +112,13 @@ function Home() {
       <section className="grid lg:grid-cols-2">
         <div className={`relative bg-forest ${c("farm_layout") === "right" ? "lg:order-2" : ""}`}>
           <video key={c("farm_video")} src={c("farm_video")} autoPlay muted loop playsInline poster="/farm.jpg" style={mediaStyle(c, "farm_video", 620)} className="w-full lg:h-full" />
-          <span className="absolute bottom-6 left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
+          <span className="absolute bottom-3 left-3 sm:bottom-6 sm:left-7 bg-forest px-3 py-2 font-mono text-[0.65rem] tracking-[0.18em] text-forest-foreground">
             OUR POMEGRANATE FARM · GUJARAT
           </span>
         </div>
-        <div className="bg-forest px-8 py-24 text-forest-foreground md:px-28">
+        <div className="bg-forest px-6 py-16 text-forest-foreground sm:px-8 sm:py-24 md:px-28">
           <Eyebrow>Our agricultural story</Eyebrow>
-          <Heading main={<>From our farms<br />to</>} accent="global markets." light className="mt-6 text-5xl md:text-[4.2rem]" />
+          <Heading main={<>From our farms<br />to</>} accent="global markets." light className="mt-6 text-4xl sm:text-5xl md:text-[4.2rem]" />
           <p className="mt-8 max-w-md text-sm leading-7 text-forest-muted">
             {c("farm_text")}
           </p>
@@ -139,9 +139,9 @@ function Home() {
       </section>
 
       {/* Documentation */}
-      <section id="certifications" className="container-site scroll-mt-4 py-28">
+      <section id="certifications" className="container-site scroll-mt-4 py-16 sm:py-28">
         <Eyebrow>Documentation</Eyebrow>
-        <Heading main={<>Registered.<br /></>} accent="Export-ready." className="mt-6 text-5xl md:text-[4.2rem]" />
+        <Heading main={<>Registered.<br /></>} accent="Export-ready." className="mt-6 text-4xl sm:text-5xl md:text-[4.2rem]" />
         <div className="mt-14 grid gap-4 md:grid-cols-3">
           {docs.map((d) => (
             <div key={d.code} className="flex flex-col border border-border border-t-2 border-t-gold bg-card p-7">
@@ -157,10 +157,10 @@ function Home() {
       </section>
 
       {/* Story */}
-      <section id="story" className="container-site scroll-mt-4 grid gap-12 border-t border-border py-24 lg:grid-cols-[1fr_1.4fr]">
+      <section id="story" className="container-site scroll-mt-4 grid gap-12 border-t border-border py-16 sm:py-24 lg:grid-cols-[1fr_1.4fr]">
         <div>
           <Eyebrow>Our story</Eyebrow>
-          <Heading main={<>Rooted in<br />our</>} accent="heritage." className="mt-6 text-5xl md:text-[4.2rem]" />
+          <Heading main={<>Rooted in<br />our</>} accent="heritage." className="mt-6 text-4xl sm:text-5xl md:text-[4.2rem]" />
           <p className="mt-8 font-display text-xl italic text-gold">Growing into a new generation of global trade.</p>
         </div>
         <ol className="grid gap-4 sm:grid-cols-2">

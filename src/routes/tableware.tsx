@@ -27,10 +27,10 @@ function Tableware() {
   const list = filter === "All" ? PRODUCTS : PRODUCTS.filter((p) => p.category === filter);
   return (
     <>
-      <section className="container-site grid gap-12 pt-12 pb-14 lg:grid-cols-2">
+      <section className="container-site grid gap-12 pt-8 pb-12 sm:pt-12 sm:pb-14 lg:grid-cols-2">
         <div className="animate-rise">
           <Eyebrow line>Sustainable tableware</Eyebrow>
-          <Heading as="h1" main={<>Bagasse<br /></>} accent="tableware." className="mt-8 text-7xl md:text-[6rem]" />
+          <Heading as="h1" main={<>Bagasse<br /></>} accent="tableware." className="mt-6 text-5xl sm:mt-8 sm:text-7xl md:text-[6rem]" />
         </div>
         <div className="lg:pt-6">
           <p className="text-xs font-bold tracking-[0.12em] text-primary">CORE FOODSERVICE RANGE</p>
@@ -45,7 +45,7 @@ function Tableware() {
         </div>
       </section>
 
-      <section className="container-site border-t border-border pt-7 pb-28">
+      <section className="container-site border-t border-border pt-7 pb-16 sm:pb-28">
         <div className="flex flex-wrap gap-2">
           {(["All", ...CATEGORIES] as const).map((c) => (
             <button

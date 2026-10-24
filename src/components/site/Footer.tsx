@@ -7,7 +7,7 @@ export function Footer() {
   const head = "font-mono text-[0.7rem] tracking-[0.2em] uppercase text-gold mb-5";
   const item = "block text-sm text-muted-foreground hover:text-foreground mb-3";
   return (
-    <footer className="container-site pt-16 pb-10">
+    <footer className="container-site pt-12 pb-8 sm:pt-16 sm:pb-10">
       <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo large />

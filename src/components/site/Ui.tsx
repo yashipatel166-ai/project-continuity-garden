@@ -41,9 +41,9 @@ export function CtaBand({
   search?: { division?: string; product?: string };
 }) {
   return (
-    <section className="bg-forest py-24 text-center">
+    <section className="bg-forest py-16 text-center sm:py-24">
       <div className="container-site">
-        <Heading main={main} accent={accent} light className="mx-auto max-w-3xl text-5xl md:text-6xl" />
+        <Heading main={main} accent={accent} light className="mx-auto max-w-3xl text-4xl sm:text-5xl md:text-6xl" />
         <Link
           to="/"
           search={search ?? {}}

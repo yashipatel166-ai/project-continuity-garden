@@ -34,7 +34,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const navCls = "whitespace-nowrap text-xs font-semibold tracking-[0.12em] uppercase hover:text-gold transition-colors";
   return (
-    <header className="container-site flex h-[84px] items-center justify-between gap-4">
+    <header className="container-site flex h-[72px] items-center sm:h-[84px] justify-between gap-4">
       <Logo />
       <nav className="hidden items-center gap-8 lg:flex">
         <div className="group relative">
@@ -64,8 +64,8 @@ export function Header() {
         </button>
       </div>
       {open && (
-        <div className="absolute inset-x-0 top-[84px] z-40 border-b border-border bg-background px-6 py-6 lg:hidden">
-          <div className="flex flex-col gap-4" onClick={() => setOpen(false)}>
+        <div className="absolute inset-x-0 top-[72px] z-40 sm:top-[84px] max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-border bg-background px-6 py-6 lg:hidden">
+          <div className="flex flex-col gap-5" onClick={() => setOpen(false)}>
             <BusinessLinks className={navCls} />
             <Link to="/" hash="about" className={navCls}>About us</Link>
             <Link to="/" hash="inquiry" className={navCls}>Contact</Link>
