@@ -119,3 +119,9 @@ _Last updated: 2026-10-24_
 - Not verified: new media upload/crop save, full Google sign-in, video playback/repetition, every translated language, production runtime after a new publish, or complete historical security logs. Private media bucket currently has no custom MIME/size limits; storage remains admin-only. Existing saved media links are time-limited as previously documented, not permanent hosting URLs.
 - Inquiry form still opens the visitor's email app; automatic lead delivery remains outside this preparation task.
 - Preparation checks completed within the above limits. No publish/deployment requested by the tool: the uploaded request asks to prepare and notify, so publishing awaits an explicit instruction to publish changes.
+
+## 2026-10-24 — Mobile optimisation (hub_prompt9685.txt, 9:16 reference)
+- Reported error (src/lib/utils.ts menuRef) does not match that file — nothing to fix.
+- Phones only (below 640px): smaller big headings, tighter section spacing, slimmer header, phone menu scrolls if tall, smaller page side margins, smaller photo labels. Computer layout unchanged.
+- Checked at 360×640 (9:16) on Home, Pomegranate, Tableware: no sideways scrolling.
+- Files: index.tsx, produce.tsx, tableware.tsx, Header, Footer, Ui, InquiryForm, styles.css.
