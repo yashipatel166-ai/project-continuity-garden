@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProduceRouteImport } from './routes/produce'
+import { Route as TablewareRouteImport } from './routes/tableware'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProduceRoute = ProduceRouteImport.update({
+  id: '/produce',
+  path: '/produce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TablewareRoute = TablewareRouteImport.update({
+  id: '/tableware',
+  path: '/tableware',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/produce': typeof ProduceRoute
+  '/tableware': typeof TablewareRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/produce': typeof ProduceRoute
+  '/tableware': typeof TablewareRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/produce': typeof ProduceRoute
+  '/tableware': typeof TablewareRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/produce' | '/tableware'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/produce' | '/tableware'
+  id: '__root__' | '/' | '/produce' | '/tableware'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProduceRoute: typeof ProduceRoute
+  TablewareRoute: typeof TablewareRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/produce': {
+      id: '/produce'
+      path: '/produce'
+      fullPath: '/produce'
+      preLoaderRoute: typeof ProduceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tableware': {
+      id: '/tableware'
+      path: '/tableware'
+      fullPath: '/tableware'
+      preLoaderRoute: typeof TablewareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProduceRoute: ProduceRoute,
+  TablewareRoute: TablewareRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
