@@ -94,11 +94,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+const OLD_DOMAIN_REDIRECT = `(function(){var l=location;if(l.hostname==="project-continuity-garden.lovable.app"&&!/^\\/(admin|~)/.test(l.pathname)){l.replace("https://www.aavyaglobex.com"+l.pathname+l.search+l.hash)}})();`;
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        {/* The old Lovable address forwards visitors to the real domain (except the /admin editor, which needs Lovable hosting). */}
+        <script dangerouslySetInnerHTML={{ __html: OLD_DOMAIN_REDIRECT }} />
       </head>
       <body>
         {children}
